@@ -45,19 +45,19 @@
 				{
 					"key": "body",
 					"title": "Body Content",
-                         "body": "The body of an article may be a string of any length, and can contain basic HTML markup (such as <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>) which is converted for display when viewing the article.<ul><li>One</li><li>Two</li></ul><br><img src='https://d2duuy9yo5pldo.cloudfront.net/polostats/c1d6cae8a22975d1a9192edbe0ae5728c2df85de-t.png' />",
+                         "body": "The body of an article may be a string of any length, and can contain basic HTML markup (such as <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>) which is converted for display when viewing the article.",
 					"related_articles": ["key", "article-title", "minimum-build", "maximum-build", "related-articles"]
 				},
                  {
                      "key": "html",
                      "title": "HTML Content",
-                     "html": "The body of an article may be a string of any length, and can contain basic HTML markup (such as <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>) which is converted for display when viewing the article.<ul><li>One</li><li>Two</li></ul><br><img src='https://d2duuy9yo5pldo.cloudfront.net/polostats/c1d6cae8a22975d1a9192edbe0ae5728c2df85de-t.png' />",
+                     "body": "The body of an article may be a string of any length, and optionally contain more complex HTML markup (such as <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>) which is converted for display when viewing the article.<ul><li>One</li><li>Two</li></ul><br><img src='https://www.fillmurray.com/600/600.png' />",
                      "related_articles": ["key", "article-title", "minimum-build", "maximum-build", "related-articles"]
                  },
                  {
                          "key": "html",
-                         "title": "Full HTML Content",
-                         "html": "You can add teams manually by following the prompts in the Stats section of the app.<div><br></div><div><ol><li>From the Home screen, select the Stats menu (upper right)</li><li>Press on the add (+) menu, the select 'Manually' from the popup menu</li><li>Enter team data as prompted:<a data_lightbox='true' href='https://d2duuy9yo5pldo.cloudfront.net/polostats/c1d6cae8a22975d1a9192edbe0ae5728c2df85de.png' rel='nofollow' target='_blank'><img src='https://d2duuy9yo5pldo.cloudfront.net/polostats/c1d6cae8a22975d1a9192edbe0ae5728c2df85de-t.png'></a></li><li>Enter all the information and then press 'Add Players'</li><li>This will begin the process of allowing you to add individual players</li><li>For each player do the following:</li></ol><ul><li>Enter the players first name, last name, jersey number and position</li><li>Optionally enter the player's email address</li><li>When done, press the 'Add' button</li></ul><div>When all players have been added, press the 'Done' button.</div><div><br></div><div><em>If you want to edit or remove a player after their details have been entered, use the swipe-to-delete method by selecting the row of the player you want to remove and swipe to the right.</em></div><ol></ol></div>",
+                         "title": "Full HTML Render",
+                         "html": "You can also explicitly add HTML content for rendering using the 'html' article element.<br /><div style='margin-left: 20px'><ol><li>You can add ordered lists</li><li>You can add un ordered lists</li><li>You can add externally loaded images :<img src='https://www.fillmurray.com/600/600.png'></a></li><li>You can add nested lists as well :</li></ol><ul><li>Add something here</li><li>Optionally add something here as well</li></ul><div>Add a footnote to empahize additional information.<br /><em>If you want to edit the style of individual elements, you can add that directly inline to the style tag of an element.</em></div>",
                          "related_articles": ["key", "article-title", "minimum-build", "maximum-build", "related-articles"]
                  },
 				{
