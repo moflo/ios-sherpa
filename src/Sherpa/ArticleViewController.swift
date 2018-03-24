@@ -149,33 +149,33 @@ internal class ArticleViewController: ListViewController {
 		}
 		
 		do {
-			let attributedText = try NSMutableAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+			let attributedText = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
 			
 			attributedText.beginEditing()
 			attributedText.enumerateAttributes(in: NSMakeRange(0,attributedText.length), options: [], using: { attributes, range, stop in
 				var mutable = attributes
 				
-				if let font = mutable[NSFontAttributeName] as? UIFont {
+                if let font = mutable[NSAttributedStringKey.font] as? UIFont {
 					let symbolicTraits = font.fontDescriptor.symbolicTraits
 					let descriptor = self.bodyView.font!.fontDescriptor.withSymbolicTraits(symbolicTraits)
 					
 					if font.familyName == "Times New Roman" {
-						mutable[NSFontAttributeName] = UIFont(descriptor: descriptor!, size: self.bodyView.font!.pointSize)
+                        mutable[NSAttributedStringKey.font] = UIFont(descriptor: descriptor!, size: self.bodyView.font!.pointSize)
 					}
 						
 					else {
-						mutable[NSFontAttributeName] = font.withSize(self.bodyView.font!.pointSize)
+                        mutable[NSAttributedStringKey.font] = font.withSize(self.bodyView.font!.pointSize)
 					}
 				}
 				
 				
-				if mutable[NSLinkAttributeName] != nil {
-					mutable[NSForegroundColorAttributeName] = self.bodyView.tintColor
-					mutable[NSStrokeColorAttributeName] = self.bodyView.tintColor
+                if mutable[NSAttributedStringKey.link] != nil {
+                    mutable[NSAttributedStringKey.foregroundColor] = self.bodyView.tintColor
+                    mutable[NSAttributedStringKey.strokeColor] = self.bodyView.tintColor
 				}
 					
 				else {
-					mutable[NSForegroundColorAttributeName] = self.bodyView.textColor
+                    mutable[NSAttributedStringKey.foregroundColor] = self.bodyView.textColor
 				}
 				
 				attributedText.setAttributes(mutable, range: range)

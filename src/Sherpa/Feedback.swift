@@ -49,10 +49,10 @@ internal class FeedbackEmail: NSObject, Feedback, MFMailComposeViewControllerDel
 		let regex = try! NSRegularExpression(pattern: "^\\s*((\"?([^\"]*)\"?|.*)\\s)?<?(.+?@.+?)>?\\s*$", options: [])
 		
 		if let match = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).first {
-			let nameRange = match.rangeAt(3)
+            let nameRange = match.range(at: 3)
 			self.name = nameRange.location != NSNotFound ? (string as NSString).substring(with: nameRange) : nil
 			
-			let emailRange = match.rangeAt(4)
+            let emailRange = match.range(at: 4)
 			self.email = emailRange.location != NSNotFound ? (string as NSString).substring(with: emailRange) : ""
 		}
 		else {
