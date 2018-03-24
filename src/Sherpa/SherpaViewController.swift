@@ -253,7 +253,7 @@ open class SherpaViewController: UIViewController, UINavigationControllerDelegat
 		return self.embeddedNavigationController ?? self.navigationController!
 	}
 	
-	open func sherpa_dismiss() {
+    @objc open func sherpa_dismiss() {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
