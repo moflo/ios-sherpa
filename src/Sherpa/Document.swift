@@ -113,7 +113,7 @@ internal class Document {
 	}
 	
 	fileprivate func _load(from array: [[String:Any]]) {
-		self.sections = array.flatMap({ Section(dictionary: $0) })
+        self.sections = array.compactMap({ Section(dictionary: $0) })
 	}
 	
 }
