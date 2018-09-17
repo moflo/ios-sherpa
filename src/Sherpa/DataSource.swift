@@ -78,15 +78,15 @@ internal class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 		var sections = self.sections
 		
 		if let query = self.query {
-			sections = sections.flatMap({ $0.section(query) })
+            sections = sections.compactMap({ $0.section(query) })
 		}
 		
 		if let filter = self.filter {
-			sections = sections.flatMap({ $0.section(filter) })
+            sections = sections.compactMap({ $0.section(filter) })
 		}
 		
 		if let buildNumber = self.buildNumber {
-			sections = sections.flatMap({ $0.section(buildNumber) })
+            sections = sections.compactMap({ $0.section(buildNumber) })
 		}
 		
 		if let sectionTitle = self.sectionTitle {
