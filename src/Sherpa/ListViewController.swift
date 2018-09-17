@@ -110,22 +110,22 @@ internal class ListViewController: UIViewController, UITableViewDelegate, UISear
 			self.navigationController?.setNavigationBarHidden(true, animated: false)
 		}
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	@objc fileprivate func onKeyboard(_ notification: Notification) {
 		UIView.beginAnimations(nil, context: nil)
 		
-		if let rawValue = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue, let curve = UIViewAnimationCurve(rawValue: rawValue) {
+        if let rawValue = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue, let curve = UIView.AnimationCurve(rawValue: rawValue) {
 			UIView.setAnimationCurve(curve)
 		}
 		
-		if let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+        if let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
 			UIView.setAnimationDuration(duration)
 		}
 		
-		let keyboardOrigin = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin.y ?? 0
+        let keyboardOrigin = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin.y ?? 0
 		
 		let contentInset = self.tableView.contentInset
 		let bottomInset = max(self.bottomLayoutGuide.length, self.tableView.frame.size.height - keyboardOrigin)
