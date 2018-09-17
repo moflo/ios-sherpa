@@ -65,9 +65,9 @@ internal class ArticleViewController: ListViewController {
 		self.contentView.translatesAutoresizingMaskIntoConstraints = false
 		
 		if #available(iOSApplicationExtension 9.0, *) {
-			self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
 		} else {
-			self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            self.titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
 		}
 		self.titleLabel.textColor = self.dataSource.document.articleTextColor
 		self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ internal class ArticleViewController: ListViewController {
         else {
             self.bodyView.backgroundColor = UIColor.clear
             self.bodyView.isEditable = false
-            self.bodyView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+            self.bodyView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
             self.bodyView.textColor = self.dataSource.document.articleTextColor
             self.bodyView.tintColor = self.dataSource.document.tintColor
             self.bodyView.translatesAutoresizingMaskIntoConstraints = false
@@ -155,27 +155,27 @@ internal class ArticleViewController: ListViewController {
 			attributedText.enumerateAttributes(in: NSMakeRange(0,attributedText.length), options: [], using: { attributes, range, stop in
 				var mutable = attributes
 				
-                if let font = mutable[NSAttributedStringKey.font] as? UIFont {
+                if let font = mutable[NSAttributedString.Key.font] as? UIFont {
 					let symbolicTraits = font.fontDescriptor.symbolicTraits
 					let descriptor = self.bodyView.font!.fontDescriptor.withSymbolicTraits(symbolicTraits)
 					
 					if font.familyName == "Times New Roman" {
-                        mutable[NSAttributedStringKey.font] = UIFont(descriptor: descriptor!, size: self.bodyView.font!.pointSize)
+                        mutable[NSAttributedString.Key.font] = UIFont(descriptor: descriptor!, size: self.bodyView.font!.pointSize)
 					}
 						
 					else {
-                        mutable[NSAttributedStringKey.font] = font.withSize(self.bodyView.font!.pointSize)
+                        mutable[NSAttributedString.Key.font] = font.withSize(self.bodyView.font!.pointSize)
 					}
 				}
 				
 				
-                if mutable[NSAttributedStringKey.link] != nil {
-                    mutable[NSAttributedStringKey.foregroundColor] = self.bodyView.tintColor
-                    mutable[NSAttributedStringKey.strokeColor] = self.bodyView.tintColor
+                if mutable[NSAttributedString.Key.link] != nil {
+                    mutable[NSAttributedString.Key.foregroundColor] = self.bodyView.tintColor
+                    mutable[NSAttributedString.Key.strokeColor] = self.bodyView.tintColor
 				}
 					
 				else {
-                    mutable[NSAttributedStringKey.foregroundColor] = self.bodyView.textColor
+                    mutable[NSAttributedString.Key.foregroundColor] = self.bodyView.textColor
 				}
 				
 				attributedText.setAttributes(mutable, range: range)
