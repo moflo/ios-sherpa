@@ -155,7 +155,7 @@ open class SherpaViewController: UIViewController, UINavigationControllerDelegat
 			let navigationController = UINavigationController()
 			self.embeddedNavigationController = navigationController
 			
-			self.addChildViewController(navigationController)
+            self.addChild(navigationController)
 			self.view.addSubview(navigationController.view)
 			
 			navigationController.delegate = self
@@ -179,7 +179,7 @@ open class SherpaViewController: UIViewController, UINavigationControllerDelegat
 			articleViewController.delegate = self
 			self.articleViewController = articleViewController
 			
-			self.addChildViewController(articleViewController)
+            self.addChild(articleViewController)
 			self.view.addSubview(articleViewController.view)
 			
 			articleViewController.view.frame = CGRect(origin: CGPoint.zero, size: self.view.frame.size)
@@ -189,7 +189,7 @@ open class SherpaViewController: UIViewController, UINavigationControllerDelegat
 			
 		// Pushing into a navigation stack
 		else {
-			self.addChildViewController(self.listViewController)
+            self.addChild(self.listViewController)
 			self.view.addSubview(self.listViewController.view)
 			
 			self.listViewController.view.frame = CGRect(origin: CGPoint.zero, size: self.view.frame.size)
@@ -204,11 +204,11 @@ open class SherpaViewController: UIViewController, UINavigationControllerDelegat
 		}
 	}
 	
-	open override var childViewControllerForStatusBarHidden : UIViewController? {
+    open override var childForStatusBarHidden : UIViewController? {
 		return self.sherpa_activeViewController
 	}
 	
-	open override var childViewControllerForStatusBarStyle : UIViewController? {
+    open override var childForStatusBarStyle : UIViewController? {
 		return self.sherpa_activeViewController
 	}
 	
