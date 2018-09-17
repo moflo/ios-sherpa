@@ -210,9 +210,9 @@ internal class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 			
 			if self.document.articleCellClass === UITableViewCell.self {
 				if #available(iOSApplicationExtension 9.0, *) {
-					cell.textLabel!.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)
+                    cell.textLabel!.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.callout)
 				} else {
-					cell.textLabel!.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+                    cell.textLabel!.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
 				}
 				cell.selectionStyle = .default
 				cell.textLabel!.textColor = self.document.tintColor
@@ -230,7 +230,7 @@ internal class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 				var alpha: CGFloat = 0
 				foregroundColor?.getRed(nil, green: nil, blue: nil, alpha: &alpha)
 				if let foregroundColor = foregroundColor?.withAlphaComponent(0.85) {
-                    attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: foregroundColor, range: NSMakeRange(0, attributedTitle.length))
+                    attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: foregroundColor, range: NSMakeRange(0, attributedTitle.length))
 				}
 				
 				var i = 0
@@ -240,9 +240,9 @@ internal class DataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 					
 					if range.location == NSNotFound { break }
 					
-                    attributedTitle.addAttribute(NSAttributedStringKey.font, value: UIFont(descriptor: bold!, size: 0.0), range: range)
+                    attributedTitle.addAttribute(NSAttributedString.Key.font, value: UIFont(descriptor: bold!, size: 0.0), range: range)
 					if let foregroundColor = foregroundColor {
-                        attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: foregroundColor, range: range)
+                        attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: foregroundColor, range: range)
 					}
 					
 					i = range.location + range.length
